@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: GitPub_d
+  pool: 5
+  username: GitPub
+  password: GitPubPass
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: GitPub_t
+  pool: 5
+  username: GitPub
+  password: GitPubPass
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: GitPub_p
+  pool: 5
+  username: GitPub
+  password: GitPubPass

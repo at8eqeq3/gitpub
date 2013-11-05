@@ -1,0 +1,49 @@
+!!!
+%html
+  %head
+    %meta{charset: 'utf-8'}
+    %title= yield :page_title
+    %meta{name: 'viewport', content: 'width=device-width, initial-scale=1.0'}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Ubuntu:400,700,400italic,700italic&subset=latin,cyrillic'
+    = stylesheet_link_tag '//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .container
+      .row
+        .col-md-3
+          %h1 GitPub
+          %form.form-inline{role: 'form', action: '/search'}
+            .input-group
+              %span.input-group-addon
+                %i.fa.fa-search
+              %input.form-control{type: 'text', id: 'term', name: 'term', placeholder: 'Поиск'}
+          %hr
+          %a.btn.btn-success.btn-block{href: '/auth/github'}
+            Войти с помощью <i class="fa fa-github"></i> GitHub
+          %hr
+          %ul.nav.nav-stacked.nav-pills
+            %li
+              %a{href: '/'} Главная
+            %li
+              %a{href: '/works'} Каталог
+            %li
+              %a{href: '/at8eqeq3/gitpub-manual'} Помощь
+            %li
+              %a{href: '/about'} О проекте
+        .col-md-9
+          = yield
+      %footer.text-muted.small
+        %hr
+        .col-md-6
+          %p
+            Created by <a href="http://at8eqeq3.me/">at8eqeq3</a>. ||| Open source project hosted at <a href="https://github.com/at8eqeq3/gitpub">GitHub</a>.
+        .col-md-6
+          %ul.list-inline.pull-right
+            %li
+              %a{href: '/'} Главная
+            %li
+              %a{href: '/about'} О проекте
+            %li
+              %a{href: '/at8eqeq3/gitpub-manual'} Помощь
