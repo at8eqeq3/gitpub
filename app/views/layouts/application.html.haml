@@ -20,19 +20,35 @@
                 %i.fa.fa-search
               %input.form-control{type: 'text', id: 'term', name: 'term', placeholder: 'Поиск'}
           %hr
-          %a.btn.btn-success.btn-block{href: '/auth/github'}
-            Войти с помощью <i class="fa fa-github"></i> GitHub
+          - if current_user
+            %a.btn.btn-info.btn-block{href: '/me'}
+              %i.fa.fa-user
+              Профиль
+          -else
+            %a.btn.btn-success.btn-block{href: '/auth/github'}
+              Войти с помощью <i class="fa fa-github"></i> GitHub
           %hr
           %ul.nav.nav-stacked.nav-pills
             %li
-              %a{href: '/'} Главная
+              
+              %a{href: '/'}
+                %i.fa.fa-home
+                Главная
             %li
-              %a{href: '/works'} Каталог
+              %a{href: '/works'}
+                %i.fa.fa-folder-open
+                Каталог
             %li
-              %a{href: '/at8eqeq3/gitpub-manual'} Помощь
+              %a{href: '/at8eqeq3/gitpub-manual'}
+                %i.fa.fa-question
+                Помощь
             %li
-              %a{href: '/about'} О проекте
+              %a{href: '/about'}
+                %i.fa.fa-info
+                О проекте
         .col-md-9
+          - flash.each do |name, msg|
+            = content_tag :div, msg, class: name
           = yield
       %footer.text-muted.small
         %hr

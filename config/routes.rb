@@ -2,8 +2,10 @@ GitPub::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  match "/auth/:provider/callback" => "sessions#create", via: [:get, :post]
+  post "/signout" => "sessions#destroy", :as => :signout
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root to: 'high_voltage/pages#show', id: 'landing'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
