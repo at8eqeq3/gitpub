@@ -1,4 +1,7 @@
 GitPub::Application.routes.draw do
+  get 'repos/connect' => 'repos#connect', :as => :connect_repos
+  resources :repos
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

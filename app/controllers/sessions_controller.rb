@@ -24,7 +24,11 @@ class SessionsController < ApplicationController
       user = User.create_with_omniauth(auth)
     end
     session[:user_id] = user.id
-    redirect_to root_url, notice: 'Signed in!'
+    if user.repos.count == 0
+      redirect_to connect_repos_url, notice: "Please, connect some repos"
+    else
+      redirect_to root_url, notice: 'Signed in!'
+    end
   end
 
   def destroy

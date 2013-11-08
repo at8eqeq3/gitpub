@@ -1,0 +1,23 @@
+= content_for :page_title, 'GitPub &ndash; Подключить репозитории'
+
+%p Выберите репозитории, которые необходимо подключить. В дальнейшем, GitHub будет самостоятельно оповещать сервис обо всех изменениях в них. Мы будем обрабатывать только ветку master, поэтому если вы не хотите сразу публиковать изменения, работайте с любой другой веткой.
+
+- if @repos.count > 0
+  %form{action: :create, method: :post}
+    .list-group
+      - @repos.each do |repo|
+        .list-group-item
+          %h3
+            .btn-group.float-right{'data-toggle' => 'buttons'}
+              %label.btn.btn-info
+                %input{type: "checkbox", name: "r#{repo.id}"} Подключить
+            &emsp;
+            = repo.name
+          %p
+            - if repo.private
+              %i.fa.fa-eye-slash
+            - if repo.fork
+              %i.fa.fa-code-fork
+            = repo.description
+          %p.small= ([link_to(repo.full_name, "https://github.com/#{repo.full_name}"), repo.id, repo.pushed_at].join("&emsp;")).html_safe
+    %input.btn.btn-primary{type: 'submit'}
