@@ -1,4 +1,8 @@
 GitPub::Application.routes.draw do
+  post 'callback' => 'repos#gh_callback' # XXX stub
+  get 'repos/connect' => 'repos#connect', :as => :connect_repos
+  resources :repos
+  get "/pages/*id" => 'pages#show', :as => :page, :format => false
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

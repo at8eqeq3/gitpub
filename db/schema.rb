@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131105201522) do
+ActiveRecord::Schema.define(version: 20131108171437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "repos", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "gh_id"
+    t.string   "gh_name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -27,6 +37,7 @@ ActiveRecord::Schema.define(version: 20131105201522) do
     t.string   "gh_email"
     t.string   "gh_profile"
     t.string   "gh_website"
+    t.string   "gh_token"
   end
 
   add_index "users", ["gh_login"], name: "index_users_on_gh_login", using: :btree
