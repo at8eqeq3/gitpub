@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:create]
+  
   def create
     auth = request.env['omniauth.auth']
     ### here goes this stuff
@@ -25,14 +27,14 @@ class SessionsController < ApplicationController
     end
     session[:user_id] = user.id
     if user.repos.count == 0
-      redirect_to connect_repos_url, notice: "Please, connect some repos"
+      redirect_to connect_repos_url, warning: "Please, connect some repos"
     else
-      redirect_to root_url, notice: 'Signed in!'
+      redirect_to root_url, success: 'Signed in!'
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, notice: 'Signed out!'
+    redirect_to root_url, success: 'Signed out!'
   end
 end

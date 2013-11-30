@@ -23,7 +23,16 @@
           - if current_user
             %a.btn.btn-info.btn-block{href: '/me'}
               %i.fa.fa-user
-              Профиль
+              = current_user.name
+            .row
+              .col-md-8
+                %i.fa.fa-book
+                = current_user.repos.count
+                репозиториев
+              .col-md-4.text-right
+                = link_to(signout_path, method: :post) do
+                  %i.fa.fa-sign-out
+                  Выйти
           -else
             %a.btn.btn-success.btn-block{href: '/auth/github'}
               Войти с помощью <i class="fa fa-github"></i> GitHub
@@ -48,7 +57,7 @@
                 О проекте
         .col-md-9
           - flash.each do |name, msg|
-            = content_tag :div, msg, class: name
+            .alert{class: "alert-#{name}"}= msg
           = yield
       %footer.text-muted.small
         %hr

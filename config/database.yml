@@ -17,7 +17,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: GitPub_p
+  database: hvmnd-p
   pool: 5
-  username: GitPub
-  password: GitPubPass
+  username: hvmndpuser
+  password: GdUHWqTsk4664ssH

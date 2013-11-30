@@ -3,14 +3,15 @@
 %p Выберите репозитории, которые необходимо подключить. В дальнейшем, GitHub будет самостоятельно оповещать сервис обо всех изменениях в них. Мы будем обрабатывать только ветку master, поэтому если вы не хотите сразу публиковать изменения, работайте с любой другой веткой.
 
 - if @repos.count > 0
-  %form{action: :create, method: :post}
+  %form{action: '/repos', method: :post}
+    %input{type: 'hidden', name: 'authenticity_token', value: form_authenticity_token}
     .list-group
       - @repos.each do |repo|
         .list-group-item
           %h3
             .btn-group.float-right{'data-toggle' => 'buttons'}
               %label.btn.btn-info
-                %input{type: "checkbox", name: "r#{repo.id}"} Подключить
+                %input{type: "checkbox", name: "[repos][#{repo.full_name}]"} Подключить
             &emsp;
             = repo.name
           %p
