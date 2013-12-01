@@ -14,5 +14,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-/config/initializers/omniauth.rb
-/config/initializers/octokit.rb
+#/config/initializers/omniauth.rb
+#/config/initializers/octokit.rb
+.elasticbeanstalk/

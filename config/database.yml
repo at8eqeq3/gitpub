@@ -1,11 +1,9 @@
 development:
-  adapter: postgresql
+  adapter: sqlite
   encoding: unicode
   database: GitPub_d
   pool: 5
-  username: GitPub
-  password: GitPubPass
-
+  
 test:
   adapter: postgresql
   encoding: unicode
@@ -17,7 +15,9 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: hvmnd-p
+  database: <%= ENV['DB_NAME'] %>
   pool: 5
-  username: hvmndpuser
-  password: GdUHWqTsk4664ssH
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
