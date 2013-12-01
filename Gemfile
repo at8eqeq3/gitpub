@@ -52,3 +52,8 @@ gem 'high_voltage'
 gem 'haml'
 gem 'haml-rails'
 gem 'sidekiq'
+
+gem 'thin'
+gem 'capistrano',  '~> 3.0.0'
+gem 'capistrano-rails', '~> 1.1.0'
+gem 'dotenv-rails'
